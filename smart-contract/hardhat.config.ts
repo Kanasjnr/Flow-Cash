@@ -18,7 +18,7 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      electroneum: "empty",
+      electroneum: "JAETNXH16CGPMMVYDICVVEV5NMEXDXZZRE",
     },
     customChains: [
       {
