@@ -1,15 +1,16 @@
 # FlowCash - Mobile-First Payment Platform on Electroneum
 
-A decentralized payment platform built on the Electroneum (ETN) blockchain, enabling P2P transfers, airtime purchases, and bill payments with integrated fee collection and cashback rewards.
+A decentralized payment platform built on the Electroneum (ETN) blockchain, designed to empower Africa's underbanked population. FlowCash enables users to send/receive ETN and spend it on everyday essentials like airtime, data, electricity, and subscriptions through a Progressive Web App (PWA) with seamless phone number-based authentication.
 
 ## 🚀 Project Overview
 
 FlowCash is a mobile-first payment solution that leverages the Electroneum blockchain to provide:
-- **P2P Transfers**: Send ETN directly to other users
-- **Airtime Purchases**: Buy airtime for various mobile networks
-- **Bill Payments**: Pay utility bills and other services
+- **P2P Transfers**: Send ETN directly to other users via phone numbers
+- **Airtime & Data Purchases**: Buy airtime for MTN, Airtel, Safaricom, Glo
+- **Bill Payments**: Pay electricity bills and TV subscriptions
 - **Fee Collection**: Automated 1.5% fee collection with distribution
 - **Cashback Rewards**: 0.5% cashback on all transactions
+- **Multi-Language Support**: English, French, Swahili, Hausa, Yoruba, Zulu
 
 ## 🏗️ Architecture
 
@@ -20,14 +21,17 @@ FlowCash is a mobile-first payment solution that leverages the Electroneum block
 ### Frontend
 - **Next.js 15**: React framework with TypeScript
 - **Tailwind CSS**: Utility-first CSS framework
-- **PWA Support**: Progressive Web App capabilities
+- **PWA Support**: Progressive Web App with offline capabilities
 - **Web3 Integration**: wagmi + viem for blockchain interactions
+- **Authentication**: Web3Auth for phone number-based wallet creation
+- **Multi-Language**: i18n support for 6 African languages
 
 ### Backend (Planned)
-- **Node.js + Express**: RESTful API
-- **PostgreSQL**: Primary database
+- **Node.js + Express**: RESTful API with GraphQL
+- **PostgreSQL**: Primary database for user profiles and transactions
 - **Redis**: Caching and session management
-- **GraphQL**: Alternative API layer
+- **Payment APIs**: Africa's Talking, Reloadly, Maviance
+- **SMS Integration**: Twilio/Africa's Talking for OTP
 
 ## 📋 Contract Addresses (Testnet)
 
@@ -38,6 +42,23 @@ FlowCash is a mobile-first payment solution that leverages the Electroneum block
 | **FeeCollector** | `0x75E4Eb5F40c48e89e0FDA6e32E88459F5d97183D` | [View Contract](https://testnet-blockexplorer.electroneum.com/address/0x75E4Eb5F40c48e89e0FDA6e32E88459F5d97183D#code) |
 | **FlowCashCore** | `0x2b2A944CeF81C24fd5bBa7EbE34F318D9d57A48b` | [View Contract](https://testnet-blockexplorer.electroneum.com/address/0x2b2A944CeF81C24fd5bBa7EbE34F318D9d57A48b#code) |
 
+### Fee Configuration
+- **Fee Rate**: 1.5% on all transactions
+- **Cashback Rate**: 0.5% returned to users
+- **Fee Distribution**:
+  - Operations: 50%
+  - Incentives: 30%
+  - Treasury: 20%
+
+### Fee Wallet
+- **Address**: `0xa1599790B763E537bd15b5b912012e5Fb65491a3`
+
+### Market Opportunity
+- **Population**: 1.4 billion people, 500 million+ mobile users
+- **Crypto Adoption**: Nigeria, Kenya, South Africa in global top 10
+- **Underbanked**: 350 million+ without banking access
+- **Airtime/Data Market**: $40 billion+ annually in Sub-Saharan Africa
+- **Utility Bill Market**: $50 billion+ annually
 
 ## 🛠️ Setup Instructions
 
@@ -95,10 +116,12 @@ FlowCash is a mobile-first payment solution that leverages the Electroneum block
    # Create .env.local file
    cp .env.example .env.local
    
-   # Add contract addresses
+   # Add contract addresses and Web3Auth config
    NEXT_PUBLIC_FLOWCASH_CORE=0x2b2A944CeF81C24fd5bBa7EbE34F318D9d57A48b
    NEXT_PUBLIC_FEE_COLLECTOR=0x75E4Eb5F40c48e89e0FDA6e32E88459F5d97183D
    NEXT_PUBLIC_CHAIN_ID=5201420
+   NEXT_PUBLIC_WEB3AUTH_CLIENT_ID=your_web3auth_client_id
+   NEXT_PUBLIC_ETN_RPC_URL=https://rpc.ankr.com/electroneum_testnet
    ```
 
 3. **Run development server**
@@ -183,20 +206,21 @@ npm run test:e2e           # Run E2E tests
 ## 📱 Features
 
 ### Core Features
-- ✅ P2P ETN transfers
-- ✅ Automated fee collection (1.5%)
-- ✅ Cashback rewards (0.5%)
-- ✅ Payment processing for airtime/bills
-- ✅ Multi-wallet fee distribution
-- ✅ Pausable functionality
-- ✅ Reentrancy protection
+- ✅ **P2P ETN Transfers**: Send/receive ETN via phone numbers using Web3Auth
+- ✅ **Airtime & Data Purchases**: Multi-country support (MTN, Airtel, Safaricom, Glo)
+- ✅ **Bill Payments**: Electricity bills and TV subscriptions (DStv, StarTimes, GOtv)
+- ✅ **Automated Fee Collection**: 1.5% fee with 50% Operations, 30% Incentives, 20% Treasury
+- ✅ **Cashback Rewards**: 0.5% cashback on all transactions
+- ✅ **Multi-Language UI**: English, French, Swahili, Hausa, Yoruba, Zulu
+- ✅ **PWA Support**: Offline capabilities, add-to-home-screen, background sync
+- ✅ **Security**: 2FA for transactions >500 ETN, rate limiting, audit logs
 
 ### Planned Features
-- 🔄 Mobile app (React Native)
-- 🔄 Referral system
-- 🔄 Advanced analytics
-- 🔄 Multi-chain support
-- 🔄 DeFi integrations
+- 🔄 **Mobile App**: React Native app with native contact sync (Q1 2026)
+- 🔄 **Referral System**: 10 ETN per referral, capped at 500,000 ETN/year
+- 🔄 **Merchant QR Payments**: Browser-based QR scanning (Phase 2)
+- 🔄 **Fiat On/Off Ramps**: ETN-to-fiat conversion via P2P marketplaces
+- 🔄 **USSD Support**: Offline transaction mode for low-connectivity areas
 
 ## 🔒 Security
 
@@ -208,13 +232,31 @@ npm run test:e2e           # Run E2E tests
 - **Comprehensive Testing**: 100% test coverage
 
 ### Frontend Security
-- **Input Validation**: Client-side validation
+- **Web3Auth Integration**: Phone number-based wallet creation
+- **2FA Protection**: SMS OTP for transactions >500 ETN
+- **Input Validation**: Client-side validation with Zod
 - **Error Handling**: Graceful error management
-- **Secure Storage**: Encrypted local storage
-- **HTTPS**: Secure connections
+- **Secure Storage**: Encrypted local storage with IndexedDB
+- **HTTPS**: Secure connections with TLS 1.3
 
 ## 📈 Business Model
 
+### Revenue Streams
+1. **Transaction Fees**: 1.5% on airtime, data, and bill payments
+2. **Partner Rebates**: 1-2% commissions from telcos/utilities via aggregators
+3. **API Monetization**: License bill payment API to fintechs
+4. **Merchant Onboarding**: One-time 5,000 ETN fee (Phase 2)
+
+### Fee Distribution
+- **Operations (50%)**: Platform maintenance, hosting, APIs
+- **Incentives (30%)**: Cashback rewards, referral programs, marketing
+- **Treasury (20%)**: Development fund, liquidity, strategic investments
+
+### Cost Structure
+- **Infrastructure**: AWS/GCP hosting, ETN node, API subscriptions
+- **Development**: PWA (React + TypeScript), React Native in Q1 2026
+- **Compliance**: KYC/AML via partners, regulatory licensing
+- **Marketing**: Referral programs, influencer campaigns, community events
 
 ## 🤝 Contributing
 
@@ -235,22 +277,29 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🗺️ Roadmap
 
-### Q4 2025
+### Q3 2025
 - ✅ Smart contract development
 - ✅ Testnet deployment
-- ✅ Frontend MVP
-- 🔄 PWA launch
+- 🔄 PWA MVP Launch (Nigeria, Kenya)
+
+### Q4 2025
+- 🔄 Expand to Ghana, Uganda
+- 🔄 Add bill payments
+- 🔄 Frontend MVP
 
 ### Q1 2026
-- 🔄 Mobile app development
+- 🔄 React Native app development
+- 🔄 Merchant QR payments
 - 🔄 Mainnet deployment
-- 🔄 Payment API integrations
-- 🔄 Referral system
 
 ### Q2 2026
-- 🔄 Advanced analytics
-- 🔄 Multi-chain support
-- 🔄 DeFi integrations
+- 🔄 Fiat on/off ramps
+- 🔄 Android app launch
+- 🔄 Expand to 10 African countries
+
+### Q3 2026
+- 🔄 USSD support
+- 🔄 Offline transaction mode
 - 🔄 Enterprise partnerships
 
 ---
