@@ -1,5 +1,6 @@
 import { HardhatUserConfig, vars} from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "solidity-coverage";
 
 const ANKR_API_KEY = vars.get("ANKR_API_KEY");
 
