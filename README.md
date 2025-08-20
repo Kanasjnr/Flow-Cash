@@ -42,16 +42,6 @@ FlowCash is a mobile-first payment solution that leverages the Electroneum block
 | **FeeCollector** | `0x75E4Eb5F40c48e89e0FDA6e32E88459F5d97183D` | [View Contract](https://testnet-blockexplorer.electroneum.com/address/0x75E4Eb5F40c48e89e0FDA6e32E88459F5d97183D#code) |
 | **FlowCashCore** | `0x2b2A944CeF81C24fd5bBa7EbE34F318D9d57A48b` | [View Contract](https://testnet-blockexplorer.electroneum.com/address/0x2b2A944CeF81C24fd5bBa7EbE34F318D9d57A48b#code) |
 
-### Fee Configuration
-- **Fee Rate**: 1.5% on all transactions
-- **Cashback Rate**: 0.5% returned to users
-- **Fee Distribution**:
-  - Operations: 50%
-  - Incentives: 30%
-  - Treasury: 20%
-
-### Fee Wallet
-- **Address**: `0xa1599790B763E537bd15b5b912012e5Fb65491a3`
 
 ### Market Opportunity
 - **Population**: 1.4 billion people, 500 million+ mobile users
@@ -239,24 +229,6 @@ npm run test:e2e           # Run E2E tests
 - **Secure Storage**: Encrypted local storage with IndexedDB
 - **HTTPS**: Secure connections with TLS 1.3
 
-## 📈 Business Model
-
-### Revenue Streams
-1. **Transaction Fees**: 1.5% on airtime, data, and bill payments
-2. **Partner Rebates**: 1-2% commissions from telcos/utilities via aggregators
-3. **API Monetization**: License bill payment API to fintechs
-4. **Merchant Onboarding**: One-time 5,000 ETN fee (Phase 2)
-
-### Fee Distribution
-- **Operations (50%)**: Platform maintenance, hosting, APIs
-- **Incentives (30%)**: Cashback rewards, referral programs, marketing
-- **Treasury (20%)**: Development fund, liquidity, strategic investments
-
-### Cost Structure
-- **Infrastructure**: AWS/GCP hosting, ETN node, API subscriptions
-- **Development**: PWA (React + TypeScript), React Native in Q1 2026
-- **Compliance**: KYC/AML via partners, regulatory licensing
-- **Marketing**: Referral programs, influencer campaigns, community events
 
 ## 🤝 Contributing
 
