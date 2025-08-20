@@ -1,16 +1,59 @@
-# FlowCash - Mobile-First Payment Platform on Electroneum
+# FlowCash
+
+> **Mobile-First Payment Platform on Electroneum Blockchain**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org/)
+[![Solidity](https://img.shields.io/badge/Solidity-0.8+-blue.svg)](https://soliditylang.org/)
 
 A decentralized payment platform built on the Electroneum (ETN) blockchain, designed to empower Africa's underbanked population. FlowCash enables users to send/receive ETN and spend it on everyday essentials like airtime, data, electricity, and subscriptions through a Progressive Web App (PWA) with seamless phone number-based authentication.
 
-## 🚀 Project Overview
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Deployment](#deployment)
+- [Testing](#testing)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [Security](#security)
+- [License](#license)
+- [Support](#support)
+
+## 🚀 Overview
 
 FlowCash is a mobile-first payment solution that leverages the Electroneum blockchain to provide:
+
 - **P2P Transfers**: Send ETN directly to other users via phone numbers
 - **Airtime & Data Purchases**: Buy airtime for MTN, Airtel, Safaricom, Glo
 - **Bill Payments**: Pay electricity bills and TV subscriptions
 - **Fee Collection**: Automated 1.5% fee collection with distribution
 - **Cashback Rewards**: 0.5% cashback on all transactions
 - **Multi-Language Support**: English, French, Swahili, Hausa, Yoruba, Zulu
+
+## ✨ Features
+
+### Core Features
+- ✅ **P2P ETN Transfers**: Send/receive ETN via phone numbers using Web3Auth
+- ✅ **Airtime & Data Purchases**: Multi-country support (MTN, Airtel, Safaricom, Glo)
+- ✅ **Bill Payments**: Electricity bills and TV subscriptions (DStv, StarTimes, GOtv)
+- ✅ **Automated Fee Collection**: 1.5% fee with 50% Operations, 30% Incentives, 20% Treasury
+- ✅ **Cashback Rewards**: 0.5% cashback on all transactions
+- ✅ **Multi-Language UI**: English, French, Swahili, Hausa, Yoruba, Zulu
+- ✅ **PWA Support**: Offline capabilities, add-to-home-screen, background sync
+- ✅ **Security**: 2FA for transactions >500 ETN, rate limiting, audit logs
+
+### Planned Features
+- 🔄 **Mobile App**: React Native app with native contact sync (Q1 2026)
+- 🔄 **Referral System**: 10 ETN per referral, capped at 500,000 ETN/year
+- 🔄 **Merchant QR Payments**: Browser-based QR scanning (Phase 2)
+- 🔄 **Fiat On/Off Ramps**: ETN-to-fiat conversion via P2P marketplaces
+- 🔄 **USSD Support**: Offline transaction mode for low-connectivity areas
 
 ## 🏗️ Architecture
 
@@ -33,52 +76,45 @@ FlowCash is a mobile-first payment solution that leverages the Electroneum block
 - **Payment APIs**: Africa's Talking, Reloadly, Maviance
 - **SMS Integration**: Twilio/Africa's Talking for OTP
 
-## 📋 Contract Addresses (Testnet)
-
-### Electroneum Testnet (Chain ID: 5201420)
-
-| Contract | Address | Block Explorer |
-|----------|---------|----------------|
-| **FeeCollector** | `0x75E4Eb5F40c48e89e0FDA6e32E88459F5d97183D` | [View Contract](https://testnet-blockexplorer.electroneum.com/address/0x75E4Eb5F40c48e89e0FDA6e32E88459F5d97183D#code) |
-| **FlowCashCore** | `0x2b2A944CeF81C24fd5bBa7EbE34F318D9d57A48b` | [View Contract](https://testnet-blockexplorer.electroneum.com/address/0x2b2A944CeF81C24fd5bBa7EbE34F318D9d57A48b#code) |
-
-### Fee Configuration
-- **Fee Rate**: 1.5% on all transactions
-- **Cashback Rate**: 0.5% returned to users
-- **Fee Distribution**:
-  - Operations: 50%
-  - Incentives: 30%
-  - Treasury: 20%
-
-### Fee Wallet
-- **Address**: `0xa1599790B763E537bd15b5b912012e5Fb65491a3`
-
-### Market Opportunity
-- **Population**: 1.4 billion people, 500 million+ mobile users
-- **Crypto Adoption**: Nigeria, Kenya, South Africa in global top 10
-- **Underbanked**: 350 million+ without banking access
-- **Airtime/Data Market**: $40 billion+ annually in Sub-Saharan Africa
-- **Utility Bill Market**: $50 billion+ annually
-
-## 🛠️ Setup Instructions
+## ⚡ Quick Start
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - npm or yarn
 - Hardhat
 - Electroneum wallet with testnet ETN
 
+### Quick Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/Flow-Cash.git
+cd Flow-Cash
+
+# Install smart contract dependencies
+cd smart-contract
+npm install
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+
+# Start development
+npm run dev
+```
+
+## 🔧 Installation
+
 ### Smart Contract Setup
 
-1. **Clone the repository**
+1. **Navigate to smart contract directory**
    ```bash
-   git clone <repository-url>
-   cd Flow-Cash
+   cd smart-contract
    ```
 
 2. **Install dependencies**
    ```bash
-   cd smart-contract
    npm install
    ```
 
@@ -105,13 +141,17 @@ FlowCash is a mobile-first payment solution that leverages the Electroneum block
 
 ### Frontend Setup
 
-1. **Install dependencies**
+1. **Navigate to frontend directory**
    ```bash
    cd frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
    npm install
    ```
 
-2. **Environment setup**
+3. **Environment setup**
    ```bash
    # Create .env.local file
    cp .env.example .env.local
@@ -124,10 +164,46 @@ FlowCash is a mobile-first payment solution that leverages the Electroneum block
    NEXT_PUBLIC_ETN_RPC_URL=https://rpc.ankr.com/electroneum_testnet
    ```
 
-3. **Run development server**
+4. **Start development server**
    ```bash
    npm run dev
    ```
+
+## ⚙️ Configuration
+
+### Contract Addresses (Testnet)
+
+#### Electroneum Testnet (Chain ID: 5201420)
+
+| Contract | Address | Block Explorer |
+|----------|---------|----------------|
+| **FeeCollector** | `0x75E4Eb5F40c48e89e0FDA6e32E88459F5d97183D` | [View Contract](https://testnet-blockexplorer.electroneum.com/address/0x75E4Eb5F40c48e89e0FDA6e32E88459F5d97183D#code) |
+| **FlowCashCore** | `0x2b2A944CeF81C24fd5bBa7EbE34F318D9d57A48b` | [View Contract](https://testnet-blockexplorer.electroneum.com/address/0x2b2A944CeF81C24fd5bBa7EbE34F318D9d57A48b#code) |
+
+### Fee Configuration
+- **Fee Rate**: 1.5% on all transactions
+- **Cashback Rate**: 0.5% returned to users
+- **Fee Distribution**:
+  - Operations: 50%
+  - Incentives: 30%
+  - Treasury: 20%
+
+### Fee Wallet
+- **Address**: `0xa1599790B763E537bd15b5b912012e5Fb65491a3`
+
+### Networks
+
+#### Testnet
+- **Network**: Electroneum Testnet
+- **Chain ID**: 5201420
+- **RPC URL**: `https://rpc.ankr.com/electroneum_testnet`
+- **Block Explorer**: https://testnet-blockexplorer.electroneum.com
+
+#### Mainnet
+- **Network**: Electroneum Mainnet
+- **Chain ID**: 52014
+- **RPC URL**: `https://rpc.ankr.com/electroneum/{API_KEY}`
+- **Block Explorer**: https://blockexplorer.electroneum.com
 
 ## 🚀 Deployment
 
@@ -157,7 +233,7 @@ FlowCash is a mobile-first payment solution that leverages the Electroneum block
    npx hardhat run scripts/verify-contracts.ts --network electroneum
    ```
 
-## 📊 Testing
+## 🧪 Testing
 
 ### Smart Contract Tests
 ```bash
@@ -173,54 +249,21 @@ npm test                    # Run unit tests
 npm run test:e2e           # Run E2E tests
 ```
 
-## 🔧 Available Scripts
+## 📚 API Reference
 
-### Smart Contract
+### Smart Contract Scripts
 - `npm run compile` - Compile contracts
 - `npm test` - Run tests
 - `npm run test:coverage` - Run tests with coverage
 - `npm run deploy:testnet` - Deploy to testnet
 - `npm run deploy:mainnet` - Deploy to mainnet
 
-### Frontend
+### Frontend Scripts
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm start` - Start production server
 - `npm run lint` - Run linter
 - `npm test` - Run tests
-
-## 🌐 Networks
-
-### Testnet
-- **Network**: Electroneum Testnet
-- **Chain ID**: 5201420
-- **RPC URL**: `https://rpc.ankr.com/electroneum_testnet`
-- **Block Explorer**: https://testnet-blockexplorer.electroneum.com
-
-### Mainnet
-- **Network**: Electroneum Mainnet
-- **Chain ID**: 52014
-- **RPC URL**: `https://rpc.ankr.com/electroneum/{API_KEY}`
-- **Block Explorer**: https://blockexplorer.electroneum.com
-
-## 📱 Features
-
-### Core Features
-- ✅ **P2P ETN Transfers**: Send/receive ETN via phone numbers using Web3Auth
-- ✅ **Airtime & Data Purchases**: Multi-country support (MTN, Airtel, Safaricom, Glo)
-- ✅ **Bill Payments**: Electricity bills and TV subscriptions (DStv, StarTimes, GOtv)
-- ✅ **Automated Fee Collection**: 1.5% fee with 50% Operations, 30% Incentives, 20% Treasury
-- ✅ **Cashback Rewards**: 0.5% cashback on all transactions
-- ✅ **Multi-Language UI**: English, French, Swahili, Hausa, Yoruba, Zulu
-- ✅ **PWA Support**: Offline capabilities, add-to-home-screen, background sync
-- ✅ **Security**: 2FA for transactions >500 ETN, rate limiting, audit logs
-
-### Planned Features
-- 🔄 **Mobile App**: React Native app with native contact sync (Q1 2026)
-- 🔄 **Referral System**: 10 ETN per referral, capped at 500,000 ETN/year
-- 🔄 **Merchant QR Payments**: Browser-based QR scanning (Phase 2)
-- 🔄 **Fiat On/Off Ramps**: ETN-to-fiat conversion via P2P marketplaces
-- 🔄 **USSD Support**: Offline transaction mode for low-connectivity areas
 
 ## 🔒 Security
 
@@ -239,26 +282,11 @@ npm run test:e2e           # Run E2E tests
 - **Secure Storage**: Encrypted local storage with IndexedDB
 - **HTTPS**: Secure connections with TLS 1.3
 
-## 📈 Business Model
-
-### Revenue Streams
-1. **Transaction Fees**: 1.5% on airtime, data, and bill payments
-2. **Partner Rebates**: 1-2% commissions from telcos/utilities via aggregators
-3. **API Monetization**: License bill payment API to fintechs
-4. **Merchant Onboarding**: One-time 5,000 ETN fee (Phase 2)
-
-### Fee Distribution
-- **Operations (50%)**: Platform maintenance, hosting, APIs
-- **Incentives (30%)**: Cashback rewards, referral programs, marketing
-- **Treasury (20%)**: Development fund, liquidity, strategic investments
-
-### Cost Structure
-- **Infrastructure**: AWS/GCP hosting, ETN node, API subscriptions
-- **Development**: PWA (React + TypeScript), React Native in Q1 2026
-- **Compliance**: KYC/AML via partners, regulatory licensing
-- **Marketing**: Referral programs, influencer campaigns, community events
-
 ## 🤝 Contributing
+
+We welcome contributions from the community! Please read our contributing guidelines before submitting pull requests.
+
+### How to Contribute
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -266,14 +294,23 @@ npm run test:e2e           # Run E2E tests
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+### Development Guidelines
+
+- Follow the existing code style and conventions
+- Write comprehensive tests for new features
+- Update documentation for any API changes
+- Ensure all tests pass before submitting PR
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Support
 
-- **Documentation**: [Project Wiki](link-to-wiki)
+- **Documentation**: [Project Wiki](https://github.com/your-username/Flow-Cash/wiki)
+- **Issues**: [GitHub Issues](https://github.com/your-username/Flow-Cash/issues)
 - **Email**: support@flowcash.com
+- **Discord**: [Join our community](https://discord.gg/flowcash)
 
 ## 🗺️ Roadmap
 
@@ -301,6 +338,29 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - 🔄 USSD support
 - 🔄 Offline transaction mode
 - 🔄 Enterprise partnerships
+
+---
+
+## 📊 Market Opportunity
+
+- **Population**: 1.4 billion people, 500 million+ mobile users
+- **Crypto Adoption**: Nigeria, Kenya, South Africa in global top 10
+- **Underbanked**: 350 million+ without banking access
+- **Airtime/Data Market**: $40 billion+ annually in Sub-Saharan Africa
+- **Utility Bill Market**: $50 billion+ annually
+
+## 💰 Business Model
+
+### Revenue Streams
+1. **Transaction Fees**: 1.5% on airtime, data, and bill payments
+2. **Partner Rebates**: 1-2% commissions from telcos/utilities via aggregators
+3. **API Monetization**: License bill payment API to fintechs
+4. **Merchant Onboarding**: One-time 5,000 ETN fee (Phase 2)
+
+### Fee Distribution
+- **Operations (50%)**: Platform maintenance, hosting, APIs
+- **Incentives (30%)**: Cashback rewards, referral programs, marketing
+- **Treasury (20%)**: Development fund, liquidity, strategic investments
 
 ---
 
